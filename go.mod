@@ -1,5 +1,5 @@
-module github.com/amrojjeh/yaag
+module github.com/amrojjeh/tajweed-calendar
 
 go 1.21
 
-require github.com/a-h/templ v0.2.501 // indirect
+require github.com/a-h/templ v0.2.501

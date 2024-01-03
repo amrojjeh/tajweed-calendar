@@ -4,7 +4,7 @@ import (
 	"log/slog"
 	"net/http"
 
-	"github.com/amrojjeh/yaag/ui"
+	"github.com/amrojjeh/tajweed-calendar/ui"
 )
 
 func (app application) homeGet() http.Handler {

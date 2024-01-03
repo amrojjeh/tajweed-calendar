@@ -11,7 +11,7 @@ import "io"
 import "bytes"
 
 import (
-	"github.com/amrojjeh/yaag/internal/cal"
+	"github.com/amrojjeh/tajweed-calendar/internal/cal"
 	"time"
 )
 

@@ -4,7 +4,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/amrojjeh/yaag/internal/assert"
+	"github.com/amrojjeh/tajweed-calendar/internal/assert"
 )
 
 func TestEvent_IsOn(t *testing.T) {

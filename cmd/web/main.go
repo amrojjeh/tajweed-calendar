@@ -8,7 +8,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/amrojjeh/yaag/internal/cal"
+	"github.com/amrojjeh/tajweed-calendar/internal/cal"
 )
 
 type application struct {

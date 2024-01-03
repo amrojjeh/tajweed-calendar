@@ -3,7 +3,7 @@ package main
 import (
 	"net/http"
 
-	"github.com/amrojjeh/yaag/ui"
+	"github.com/amrojjeh/tajweed-calendar/ui"
 )
 
 func (app application) routes() http.Handler {
