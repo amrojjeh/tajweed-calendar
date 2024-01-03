@@ -8,6 +8,7 @@ import (
 	"os"
 	"time"
 
+	"github.com/amrojjeh/tajweed-calendar/data"
 	"github.com/amrojjeh/tajweed-calendar/internal/cal"
 )
 
@@ -47,7 +48,7 @@ func main() {
 }
 
 func loadEvents() ([]cal.Event, error) {
-	data, err := os.ReadFile("data/events.json")
+	data, err := data.Files.ReadFile("events.json")
 	if err != nil {
 		return []cal.Event{}, nil
 	}
