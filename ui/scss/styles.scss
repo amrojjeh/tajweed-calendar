@@ -1,0 +1,90 @@
+body {
+	background-color: white;
+	font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	margin-bottom: 5rem;
+}
+
+h1 {
+	text-align: center;
+}
+
+.yaag-calendar {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: repeat(3, 1fr);
+	column-gap: 4rem;
+	row-gap: 3rem;
+	width: 80%;
+	margin: 0 auto;
+}
+
+.yaag-month {
+	>h2 {
+		text-align: center;
+	}
+
+	>.month {
+		display: grid;
+		grid-template-columns: repeat(7, 1fr);
+		grid-template-rows: repeat(5, 1fr);
+		row-gap: 1rem;
+		text-align: center;
+
+		>.weekday {
+			background-color: gray;
+			color: white;
+			font-weight: bold;
+		}
+	}
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.skyblue {
+	background-color: #9fd8ef;
+}
+
+.brown {
+	background-color: #C4A484;
+}
+
+.pink {
+	background-color: pink;
+}
+
+.orange {
+	background-color: orange;
+}
+
+.fatwanight {
+	background-color: #31fdfd;
+}
+
+.light-green {
+	background-color: #7cff7c;
+}
+
+.green {
+	background-color: lightgreen;
+}
+
+.white {
+	background-color: white;
+}
+
+.day-colors {}
+
+.dots {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: .5rem;
+}
+
+.dot {
+	width: 0.5rem;
+	height: 0.5rem;
+	border-radius: 100%;
+}

@@ -1,0 +1,31 @@
+package ui
+
+import "strconv"
+
+type DayViewModel struct {
+	Number int
+	Colors []string
+}
+
+templ Day(m DayViewModel) {
+	if len(m.Colors) > 1 {
+		@manyDay(m)
+	} else {
+		@singleDay(m)
+	}
+}
+
+templ manyDay(m DayViewModel) {
+	<div class="day-colors">
+		<span class="white bold">{strconv.Itoa(m.Number)}</span>
+		<div class="dots">
+			for _, c := range m.Colors {
+				<span class={c, "dot"}></span>
+			}
+		</div>
+	</div>
+}
+
+templ singleDay(m DayViewModel) {
+	<span class={m.Colors[0], templ.KV("bold", m.Colors[0]!="white")}>{strconv.Itoa(m.Number)}</span>
+}

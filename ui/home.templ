@@ -1,0 +1,54 @@
+package ui
+
+import (
+	"time"
+	"github.com/amrojjeh/yaag/internal/cal"
+) 
+
+type HomeViewModel struct {
+	Months []MonthViewModel
+}
+
+func NewHomeViewModel(es []cal.Event) HomeViewModel {
+	model := HomeViewModel{
+		Months: []MonthViewModel{},
+	}
+	for i := 1; i <= 12; i++ {
+		m := MonthViewModel{}
+		for d := 1; d <= cal.Months[time.Month(i)]; d++ {
+			dm := DayViewModel{
+				Number: d,
+				Colors: []string{"white"},
+			}
+			eventAdded := false
+			for _, s := range es {
+				if s.IsOn(2024, time.Month(i), d) {
+					if eventAdded {
+						dm.Colors = append(dm.Colors, s.Color)
+					} else {
+						dm.Colors[0] = s.Color
+						eventAdded = true
+					}
+				}
+			}
+
+			m.Days = append(m.Days, dm)
+		}
+		m.StartingWeekday = int(cal.FirstWeekdayInMonth(2024, time.Month(i)))
+		m.Month = time.Month(i).String()
+		model.Months = append(model.Months, m)
+	}
+
+	return model
+}
+
+templ HomePage(m HomeViewModel) {
+	@Base() {
+		<h1>2024</h1>
+		<div class="yaag-calendar">
+			for _, m := range m.Months {
+				@Month(m)
+			}
+		</div>
+	}
+}

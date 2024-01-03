@@ -1,0 +1,28 @@
+package ui
+
+type MonthViewModel struct {
+	Month string
+	Days []DayViewModel
+	StartingWeekday int
+}
+
+templ Month(m MonthViewModel) {
+	<div class="yaag-month">
+		<h2>{m.Month}</h2>
+		<div class="month">
+			<span class="weekday">S</span>
+			<span class="weekday">M</span>
+			<span class="weekday">T</span>
+			<span class="weekday">W</span>
+			<span class="weekday">T</span>
+			<span class="weekday">F</span>
+			<span class="weekday">S</span>
+			for i := 0; i < m.StartingWeekday; i++ {
+				<span></span>
+			}
+			for _, d := range m.Days {
+				@Day(d)
+			}
+		</div>
+	</div>
+}
