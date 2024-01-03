@@ -31,9 +31,12 @@ templ manyDay(m DayViewModel) {
 }
 
 templ singleDay(m DayViewModel) {
-	<span class={m.Colors[0],
-	templ.KV("clickable", m.Colors[0]!="white")}
-	hx-get={m.EventDetailsGET}
-	hx-target="#event-details"
-	hx-swap="outerHTML">{strconv.Itoa(m.Number)}</span>
+	if m.EventDetailsGET == "" {
+		<span class={m.Colors[0]}>{strconv.Itoa(m.Number)}</span>
+	} else {
+		<span class={m.Colors[0], "clickable"}
+		hx-get={m.EventDetailsGET}
+		hx-target="#event-details"
+		hx-swap="outerHTML">{strconv.Itoa(m.Number)}</span>
+	}
 }
