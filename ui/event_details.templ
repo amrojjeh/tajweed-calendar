@@ -1,0 +1,21 @@
+package ui
+
+type EventDetailsViewModel struct {
+	Color string
+	Name string
+	Time string
+}
+
+templ EventDetails(ms ...EventDetailsViewModel) {
+	<div class="event-details" id="event-details">
+		for _, m := range ms {
+			<div class={"square", m.Color}></div>
+			<p class="name">{m.Name}</p>
+		}
+	</div>
+}
+
+templ EventDetailsEmpty() {
+	<div class="event-details" id="event-details">
+	</div>
+}

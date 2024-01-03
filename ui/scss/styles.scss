@@ -1,11 +1,21 @@
 body {
 	background-color: white;
-	font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	font-family: 'Segoe UI',
+		Roboto,
+		Oxygen,
+		Ubuntu,
+		Cantarell,
+		'Open Sans',
+		'Helvetica Neue',
+		sans-serif;
 	margin-bottom: 5rem;
 }
 
-h1 {
+header {
 	text-align: center;
+	position: sticky;
+	background-color: white;
+	top: 0;
 }
 
 .yaag-calendar {
@@ -16,6 +26,24 @@ h1 {
 	row-gap: 3rem;
 	width: 80%;
 	margin: 0 auto;
+}
+
+@media (max-width: 1250px) {
+	.yaag-calendar {
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+}
+
+@media (max-width: 950px) {
+	.yaag-calendar {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+@media (max-width: 700px) {
+	.yaag-calendar {
+		grid-template-columns: 1fr;
+	}
 }
 
 .yaag-month {
@@ -38,8 +66,9 @@ h1 {
 	}
 }
 
-.bold {
+.clickable {
 	font-weight: bold;
+	cursor: pointer;
 }
 
 .skyblue {
@@ -87,4 +116,21 @@ h1 {
 	width: 0.5rem;
 	height: 0.5rem;
 	border-radius: 100%;
+}
+
+.event-details {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: .5rem;
+
+	>.square {
+		width: 20px;
+		height: 20px;
+	}
+
+	>.name {
+		font-size: 1.2rem;
+		font-weight: bold;
+	}
 }

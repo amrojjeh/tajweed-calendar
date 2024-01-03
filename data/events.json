@@ -1,5 +1,6 @@
 [
   {
+    "id": 0,
     "name": "Brothers' Youth Night",
     "next": "weekly",
     "color": "skyblue",
@@ -13,6 +14,7 @@
     ]
   },
   {
+    "id": 1,
     "name": "Girls' Game Day",
     "next": "monthly by weekday count",
     "color": "pink",
@@ -23,6 +25,7 @@
     ]
   },
   {
+    "id": 2,
     "name": "Spill the tea",
     "next": "monthly by weekday count",
     "color": "brown",
@@ -33,6 +36,7 @@
     ]
   },
   {
+    "id": 3,
     "name": "Monthly Halaqah",
     "next": "monthly by weekday count",
     "color": "orange",
@@ -43,6 +47,7 @@
     ]
   },
   {
+    "id": 4,
     "name": "Ramadan",
     "next": "everyday",
     "color": "light-green",
@@ -51,6 +56,7 @@
     "last": "2024/04/09 11:59pm"
   },
   {
+    "id": 5,
     "name": "Eid",
     "color": "green",
     "first": "2024/04/10 12:00am",

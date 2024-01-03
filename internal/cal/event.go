@@ -3,14 +3,17 @@ package cal
 import (
 	"encoding/json"
 	"errors"
+	"fmt"
 	"time"
 )
 
 type EventTime time.Time
 type EventDuration time.Duration
+type Events []Event
 
 // TODO(Amr Ojjeh): Add "Added" for exceptional events within the series
 type Event struct {
+	Id        int           `json:"id"`
 	Name      string        `json:"name"`
 	Next      NextFunc      `json:"next"`
 	Color     string        `json:"color"`
@@ -18,6 +21,16 @@ type Event struct {
 	Duration  EventDuration `json:"duration"`
 	LastDate  EventTime     `json:"last"`
 	Cancelled []EventTime   `json:"cancelled"`
+}
+
+func (es Events) GetEventWithId(id int) (Event, error) {
+	for _, e := range es {
+		if e.Id == id {
+			return e, nil
+		}
+	}
+	return Event{}, errors.New(
+		fmt.Sprintf("cal: Events: there's no event with the id %v", id))
 }
 
 func (et *EventTime) UnmarshalJSON(data []byte) error {
@@ -64,12 +77,12 @@ func NewEvent(name, color string, first time.Time, duration time.Duration,
 
 func (e Event) Cancel(year int, month time.Month, day int) {
 	e.Cancelled = append(e.Cancelled, NewEventDate(year, month, day,
-		e.NormalHour(), e.NormalMinute()))
+		e.Hour(), e.Minute()))
 }
 
 func (e Event) IsOn(year int, month time.Month, day int) bool {
-	t := time.Date(year, time.Month(month), day, e.NormalHour(),
-		e.NormalMinute(), 0, 0, time.UTC)
+	t := time.Date(year, time.Month(month), day, e.Hour(),
+		e.Minute(), 0, 0, time.UTC)
 	if t.Before(time.Time(e.FirstDate)) ||
 		(!time.Time(e.LastDate).IsZero() && t.After(time.Time(e.LastDate))) {
 		return false
@@ -97,10 +110,10 @@ func (e Event) IsOn(year int, month time.Month, day int) bool {
 	return false
 }
 
-func (e Event) NormalHour() int {
+func (e Event) Hour() int {
 	return time.Time(e.FirstDate).Hour()
 }
 
-func (e Event) NormalMinute() int {
+func (e Event) Minute() int {
 	return time.Time(e.FirstDate).Minute()
 }

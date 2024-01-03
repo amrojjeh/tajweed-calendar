@@ -2,6 +2,7 @@ package ui
 
 import (
 	"time"
+	"fmt"
 	"github.com/amrojjeh/tajweed-calendar/internal/cal"
 ) 
 
@@ -25,8 +26,10 @@ func NewHomeViewModel(es []cal.Event) HomeViewModel {
 				if s.IsOn(2024, time.Month(i), d) {
 					if eventAdded {
 						dm.Colors = append(dm.Colors, s.Color)
+						dm.EventDetailsGET = dm.EventDetailsGET + fmt.Sprintf("&id=%v", s.Id)
 					} else {
 						dm.Colors[0] = s.Color
+						dm.EventDetailsGET = fmt.Sprintf("/event-details?id=%v", s.Id)
 						eventAdded = true
 					}
 				}
@@ -44,7 +47,10 @@ func NewHomeViewModel(es []cal.Event) HomeViewModel {
 
 templ HomePage(m HomeViewModel) {
 	@Base() {
-		<h1>2024</h1>
+		<header>
+			<h1>2024</h1>
+			@EventDetailsEmpty()
+		</header>
 		<div class="yaag-calendar">
 			for _, m := range m.Months {
 				@Month(m)

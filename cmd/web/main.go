@@ -14,7 +14,7 @@ import (
 
 type application struct {
 	logger *slog.Logger
-	events []cal.Event
+	events cal.Events
 }
 
 func main() {

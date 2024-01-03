@@ -5,6 +5,7 @@ import "strconv"
 type DayViewModel struct {
 	Number int
 	Colors []string
+	EventDetailsGET string
 }
 
 templ Day(m DayViewModel) {
@@ -17,7 +18,10 @@ templ Day(m DayViewModel) {
 
 templ manyDay(m DayViewModel) {
 	<div class="day-colors">
-		<span class="white bold">{strconv.Itoa(m.Number)}</span>
+		<span class="white clickable"
+		hx-get={m.EventDetailsGET}
+		hx-target="#event-details"
+		hx-swap="outerHTML">{strconv.Itoa(m.Number)}</span>
 		<div class="dots">
 			for _, c := range m.Colors {
 				<span class={c, "dot"}></span>
@@ -27,5 +31,9 @@ templ manyDay(m DayViewModel) {
 }
 
 templ singleDay(m DayViewModel) {
-	<span class={m.Colors[0], templ.KV("bold", m.Colors[0]!="white")}>{strconv.Itoa(m.Number)}</span>
+	<span class={m.Colors[0],
+	templ.KV("clickable", m.Colors[0]!="white")}
+	hx-get={m.EventDetailsGET}
+	hx-target="#event-details"
+	hx-swap="outerHTML">{strconv.Itoa(m.Number)}</span>
 }

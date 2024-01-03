@@ -11,6 +11,7 @@ import "io"
 import "bytes"
 
 import (
+	"fmt"
 	"github.com/amrojjeh/tajweed-calendar/internal/cal"
 	"time"
 )
@@ -35,8 +36,10 @@ func NewHomeViewModel(es []cal.Event) HomeViewModel {
 				if s.IsOn(2024, time.Month(i), d) {
 					if eventAdded {
 						dm.Colors = append(dm.Colors, s.Color)
+						dm.EventDetailsGET = dm.EventDetailsGET + fmt.Sprintf("&id=%v", s.Id)
 					} else {
 						dm.Colors[0] = s.Color
+						dm.EventDetailsGET = fmt.Sprintf("/event-details?id=%v", s.Id)
 						eventAdded = true
 					}
 				}
@@ -71,7 +74,7 @@ func HomePage(m HomeViewModel) templ.Component {
 				templ_7745c5c3_Buffer = templ.GetBuffer()
 				defer templ.ReleaseBuffer(templ_7745c5c3_Buffer)
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<h1>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<header><h1>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -80,7 +83,15 @@ func HomePage(m HomeViewModel) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</h1><div class=\"yaag-calendar\">")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</h1>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = EventDetailsEmpty().Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</header><div class=\"yaag-calendar\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
