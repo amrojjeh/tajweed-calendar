@@ -8,7 +8,7 @@ body {
 		'Open Sans',
 		'Helvetica Neue',
 		sans-serif;
-	margin-top: 0;
+	margin: 0;
 	margin-bottom: 5rem;
 	background-color: white;
 }
@@ -29,7 +29,8 @@ header {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-evenly;
-	background-color: #fbffff;
+	background-color: #eff;
+	flex-flow: wrap;
 
 	.committee {
 		font-weight: bold;
@@ -72,6 +73,12 @@ header {
 @media (max-width: 700px) {
 	.yaag-calendar {
 		grid-template-columns: 1fr;
+	}
+
+	.cal-legend {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		padding-left: 2rem;
 	}
 }
 
