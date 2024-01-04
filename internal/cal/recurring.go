@@ -9,35 +9,58 @@ import (
 // TODO(Amr Ojjeh): Turn NextFunc into an interface such that it
 // supports both a "next" method as well as an "IsOn" method
 
-type NextFunc func(time.Time) time.Time
+type RecurringType struct {
+	Next NextFunc
+	IsOn IsOnFunc
+}
 
-func (n *NextFunc) UnmarshalJSON(data []byte) error {
+type NextFunc func(time.Time) time.Time
+type IsOnFunc func(time.Time, time.Time) bool
+
+func (n *RecurringType) UnmarshalJSON(data []byte) error {
 	var s string
 	err := json.Unmarshal(data, &s)
 	if err != nil {
 		err = errors.Join(errors.New("cal: NextFunc: failed to parse JSON"), err)
 		return err
 	}
-	switch s {
-	case "":
-		*n = nil
-	case "weekly":
-		*n = Weekly
-	case "monthly by weekday count":
-		*n = MonthlyByWeekdayCount
-	case "everyday":
-		*n = Everyday
-	default:
-		*n = nil
-	}
+	*n = RecurringTypeFromString(s)
 	return nil
 }
 
-func Weekly(t time.Time) time.Time {
+func RecurringTypeFromString(s string) RecurringType {
+	switch s {
+	case "":
+		return RecurringType{}
+	case "weekly":
+		return RecurringType{
+			Next: weekly,
+			IsOn: weeklyIsOn,
+		}
+	case "monthly by weekday count":
+		return RecurringType{
+			Next: monthlyByWeekdayCount,
+			IsOn: monthlyByWeekdayCountIsOn,
+		}
+	case "everyday":
+		return RecurringType{
+			Next: everyday,
+			IsOn: everydayIsOn,
+		}
+	default:
+		return RecurringType{}
+	}
+}
+
+func weekly(t time.Time) time.Time {
 	return t.AddDate(0, 0, 7)
 }
 
-func MonthlyByWeekdayCount(t time.Time) time.Time {
+func weeklyIsOn(first time.Time, ison time.Time) bool {
+	return first.Weekday() == ison.Weekday()
+}
+
+func monthlyByWeekdayCount(t time.Time) time.Time {
 	occ_wanted := WeekdayOccurenceNumber(t)
 	weekday := t.Weekday()
 	y := t.Year()
@@ -67,6 +90,28 @@ func MonthlyByWeekdayCount(t time.Time) time.Time {
 	return last
 }
 
-func Everyday(t time.Time) time.Time {
+func monthlyByWeekdayCountIsOn(first time.Time, ison time.Time) bool {
+	if first.Weekday() != ison.Weekday() {
+		return false
+	}
+
+	first_occ := WeekdayOccurenceNumber(first)
+	ison_occ := WeekdayOccurenceNumber(ison)
+	if first_occ == ison_occ {
+		return true
+	}
+
+	if first_occ == 5 && ison.AddDate(0, 0, 7).Month() != ison.Month() {
+		return true
+	}
+
+	return false
+}
+
+func everyday(t time.Time) time.Time {
 	return t.AddDate(0, 0, 1)
+}
+
+func everydayIsOn(first time.Time, ison time.Time) bool {
+	return true
 }

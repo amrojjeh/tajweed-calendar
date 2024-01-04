@@ -16,7 +16,7 @@ type Event struct {
 	Id        int           `json:"id"`
 	Name      string        `json:"name"`
 	Committee string        `json:"committee"`
-	Next      NextFunc      `json:"next"`
+	Recurring RecurringType `json:"next"`
 	Color     string        `json:"color"`
 	FirstDate EventTime     `json:"first"`
 	Duration  EventDuration `json:"duration"`
@@ -80,10 +80,10 @@ func NewEventDateFromTime(t time.Time) EventTime {
 }
 
 func NewEvent(name, color string, first time.Time, duration time.Duration,
-	last time.Time, next NextFunc) Event {
+	last time.Time, next string) Event {
 	return Event{
 		Name:      name,
-		Next:      next,
+		Recurring: RecurringTypeFromString(next),
 		Color:     color,
 		FirstDate: NewEventDateFromTime(first),
 		LastDate:  NewEventDateFromTime(last),
@@ -111,13 +111,17 @@ func (e Event) IsOn(year int, month time.Month, day int) bool {
 		}
 	}
 
-	if e.Next == nil {
+	if e.Recurring.IsOn != nil {
+		return e.Recurring.IsOn(time.Time(e.FirstDate), t)
+	}
+
+	if e.Recurring.Next == nil {
 		return t.Equal(time.Time(e.FirstDate))
 	}
 
 	d := time.Time(e.FirstDate)
 	for d.Before(t) {
-		d = e.Next(d)
+		d = e.Recurring.Next(d)
 	}
 
 	if d.Year() == year && d.Month() == month && d.Day() == day {

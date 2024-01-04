@@ -20,7 +20,7 @@ func TestEvent_IsOn(t *testing.T) {
 			name: "Single Event - True",
 			event: Event{
 				Name:      "Soccer",
-				Next:      nil,
+				Recurring: RecurringTypeFromString(""),
 				Color:     "soccer",
 				FirstDate: NewEventDate(2024, time.January, 13, 13, 30),
 				Duration:  1.0,
@@ -34,7 +34,7 @@ func TestEvent_IsOn(t *testing.T) {
 			name: "Single Event - False",
 			event: Event{
 				Name:      "Soccer",
-				Next:      nil,
+				Recurring: RecurringTypeFromString(""),
 				Color:     "soccer",
 				FirstDate: NewEventDate(2024, time.January, 13, 13, 30),
 				Duration:  1.0,
@@ -48,7 +48,7 @@ func TestEvent_IsOn(t *testing.T) {
 			name: "Weekly event - First",
 			event: Event{
 				Name:      "Soccer",
-				Next:      Weekly,
+				Recurring: RecurringTypeFromString("weekly"),
 				Color:     "soccer",
 				FirstDate: NewEventDate(2024, time.January, 13, 13, 30),
 				Duration:  1.0,
@@ -62,7 +62,7 @@ func TestEvent_IsOn(t *testing.T) {
 			name: "Weekly event - Second",
 			event: Event{
 				Name:      "Soccer",
-				Next:      Weekly,
+				Recurring: RecurringTypeFromString("weekly"),
 				Color:     "soccer",
 				FirstDate: NewEventDate(2024, time.January, 13, 13, 30),
 				Duration:  1.0,
@@ -76,7 +76,7 @@ func TestEvent_IsOn(t *testing.T) {
 			name: "Weekly event - Next Month",
 			event: Event{
 				Name:      "Soccer",
-				Next:      Weekly,
+				Recurring: RecurringTypeFromString("weekly"),
 				Color:     "soccer",
 				FirstDate: NewEventDate(2024, time.January, 13, 13, 30),
 				Duration:  1.0,
@@ -90,7 +90,7 @@ func TestEvent_IsOn(t *testing.T) {
 			name: "Weekly event - False",
 			event: Event{
 				Name:      "Soccer",
-				Next:      Weekly,
+				Recurring: RecurringTypeFromString("weekly"),
 				Color:     "soccer",
 				FirstDate: NewEventDate(2024, time.January, 13, 13, 30),
 				Duration:  1.0,
@@ -104,7 +104,7 @@ func TestEvent_IsOn(t *testing.T) {
 			name: "Monthly by weekend count event - First",
 			event: Event{
 				Name:      "Soccer",
-				Next:      MonthlyByWeekdayCount,
+				Recurring: RecurringTypeFromString("monthly by weekday count"),
 				Color:     "soccer",
 				FirstDate: NewEventDate(2024, time.January, 13, 13, 30),
 				Duration:  1.0,
@@ -118,7 +118,7 @@ func TestEvent_IsOn(t *testing.T) {
 			name: "Monthly by weekend count event - Second",
 			event: Event{
 				Name:      "Soccer",
-				Next:      MonthlyByWeekdayCount,
+				Recurring: RecurringTypeFromString("monthly by weekday count"),
 				Color:     "soccer",
 				FirstDate: NewEventDate(2024, time.January, 13, 13, 30),
 				Duration:  1.0,
@@ -132,7 +132,7 @@ func TestEvent_IsOn(t *testing.T) {
 			name: "Monthly by weekend count event - Fifth Day",
 			event: Event{
 				Name:      "Soccer",
-				Next:      MonthlyByWeekdayCount,
+				Recurring: RecurringTypeFromString("monthly by weekday count"),
 				Color:     "soccer",
 				FirstDate: NewEventDate(2024, time.January, 31, 13, 30),
 				Duration:  1.0,
@@ -146,7 +146,7 @@ func TestEvent_IsOn(t *testing.T) {
 			name: "Monthly by weekend count event - False",
 			event: Event{
 				Name:      "Soccer",
-				Next:      MonthlyByWeekdayCount,
+				Recurring: RecurringTypeFromString("monthly by weekday count"),
 				Color:     "soccer",
 				FirstDate: NewEventDate(2024, time.January, 13, 13, 30),
 				Duration:  1.0,
