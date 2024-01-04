@@ -18,11 +18,13 @@ import (
 
 type HomeViewModel struct {
 	Months []MonthViewModel
+	Legend map[string]cal.Events
 }
 
-func NewHomeViewModel(es []cal.Event) HomeViewModel {
+func NewHomeViewModel(es cal.Events) HomeViewModel {
 	model := HomeViewModel{
 		Months: []MonthViewModel{},
+		Legend: es.EventsByCommittees(),
 	}
 	for i := 1; i <= 12; i++ {
 		m := MonthViewModel{}
@@ -39,7 +41,8 @@ func NewHomeViewModel(es []cal.Event) HomeViewModel {
 						dm.EventDetailsGET = dm.EventDetailsGET + fmt.Sprintf("&id=%v", s.Id)
 					} else {
 						dm.Colors[0] = s.Color
-						dm.EventDetailsGET = fmt.Sprintf("/event-details?id=%v", s.Id)
+						dm.EventDetailsGET = fmt.Sprintf("/event-details?m=%v&d=%v&id=%v",
+							i, d, s.Id)
 						eventAdded = true
 					}
 				}
@@ -91,7 +94,15 @@ func HomePage(m HomeViewModel) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</header><div class=\"yaag-calendar\">")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</header>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = Legend(m.Legend).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(" <div class=\"yaag-calendar\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

@@ -2,6 +2,7 @@
   {
     "id": 0,
     "name": "Brothers' Youth Night",
+    "committee": "Brothers",
     "next": "weekly",
     "color": "skyblue",
     "first": "2024/01/06 07:15pm",
@@ -16,6 +17,7 @@
   {
     "id": 1,
     "name": "Girls' Game Day",
+    "committee": "Sisters",
     "next": "monthly by weekday count",
     "color": "pink",
     "first": "2024/01/06 05:30pm",
@@ -27,6 +29,7 @@
   {
     "id": 2,
     "name": "Spill the tea",
+    "committee": "Sisters",
     "next": "monthly by weekday count",
     "color": "brown",
     "first": "2024/01/20 07:15pm",
@@ -38,6 +41,7 @@
   {
     "id": 3,
     "name": "Monthly Halaqah",
+    "committee": "Da'wa",
     "next": "monthly by weekday count",
     "color": "orange",
     "first": "2024/01/19 07:15pm",
@@ -61,5 +65,17 @@
     "color": "green",
     "first": "2024/04/10 12:00am",
     "duration": 24.0
+  },
+  {
+    "id": 6,
+    "name": "Fatwa Night",
+    "committee": "Education",
+    "next": "monthly by weekday count",
+    "color": "teal",
+    "first": "2024/01/02 07:15pm",
+    "duration": 1.0,
+    "cancelled": [
+      "2024/04/02 12:00am"
+    ]
   }
 ]

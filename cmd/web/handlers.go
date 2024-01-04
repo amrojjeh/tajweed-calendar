@@ -1,8 +1,10 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
 	"strconv"
+	"time"
 
 	"github.com/amrojjeh/tajweed-calendar/ui"
 )
@@ -21,7 +23,7 @@ func (app application) eventDetailsGet() http.Handler {
 			return
 		}
 		idstrs := r.Form["id"]
-		ms := []ui.EventDetailsViewModel{}
+		ms := []ui.EventViewModel{}
 		for _, str := range idstrs {
 			id, err := strconv.Atoi(str)
 			if err != nil {
@@ -33,11 +35,27 @@ func (app application) eventDetailsGet() http.Handler {
 				app.clientError(w, http.StatusBadRequest)
 				return
 			}
-			ms = append(ms, ui.EventDetailsViewModel{
+			ms = append(ms, ui.EventViewModel{
 				Color: e.Color,
 				Name:  e.Name,
 			})
 		}
-		ui.EventDetails(ms...).Render(r.Context(), w)
+		monthstr := r.Form.Get("m")
+		month, err := strconv.Atoi(monthstr)
+		if err != nil {
+			app.serverError(w, err)
+			return
+		}
+		daystr := r.Form.Get("d")
+		day, err := strconv.Atoi(daystr)
+		if err != nil {
+			app.serverError(w, err)
+			return
+		}
+		m := ui.EventDetailsViewModel{
+			Events: ms,
+			Time:   fmt.Sprintf("%v %v ", time.Month(month), day),
+		}
+		ui.EventDetails(m).Render(r.Context(), w)
 	})
 }

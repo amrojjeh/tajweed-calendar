@@ -1,0 +1,19 @@
+package ui
+
+import "github.com/amrojjeh/tajweed-calendar/internal/cal"
+
+templ Legend(m map[string]cal.Events) {
+	<div class="cal-legend">
+		for c, es := range m {
+			<div>
+				<p class="committee">{c}</p>
+				for _, e := range es {
+					<div class="event">
+						<div class={"square", e.Color}></div>
+						<p>{e.Name}</p>
+					</div>
+				}
+			</div>
+		}
+	</div>
+}

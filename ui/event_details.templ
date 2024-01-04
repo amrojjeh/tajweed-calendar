@@ -1,14 +1,19 @@
 package ui
 
 type EventDetailsViewModel struct {
-	Color string
-	Name string
+	Events []EventViewModel
 	Time string
 }
 
-templ EventDetails(ms ...EventDetailsViewModel) {
+type EventViewModel struct {
+	Color string
+	Name string
+}
+
+templ EventDetails(m EventDetailsViewModel) {
 	<div class="event-details" id="event-details">
-		for _, m := range ms {
+		<span>{m.Time}</span>
+		for _, m := range m.Events {
 			<div class={"square", m.Color}></div>
 			<p class="name">{m.Name}</p>
 		}

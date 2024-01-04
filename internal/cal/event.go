@@ -15,12 +15,28 @@ type Events []Event
 type Event struct {
 	Id        int           `json:"id"`
 	Name      string        `json:"name"`
+	Committee string        `json:"committee"`
 	Next      NextFunc      `json:"next"`
 	Color     string        `json:"color"`
 	FirstDate EventTime     `json:"first"`
 	Duration  EventDuration `json:"duration"`
 	LastDate  EventTime     `json:"last"`
 	Cancelled []EventTime   `json:"cancelled"`
+}
+
+func (es Events) EventsByCommittees() map[string]Events {
+	cs := map[string]Events{}
+	for _, e := range es {
+		if e.Committee == "" {
+			continue
+		}
+		_, found := cs[e.Committee]
+		if !found {
+			cs[e.Committee] = Events{}
+		}
+		cs[e.Committee] = append(cs[e.Committee], e)
+	}
+	return cs
 }
 
 func (es Events) GetEventWithId(id int) (Event, error) {

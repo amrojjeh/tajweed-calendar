@@ -8,7 +8,9 @@ body {
 		'Open Sans',
 		'Helvetica Neue',
 		sans-serif;
+	margin-top: 0;
 	margin-bottom: 5rem;
+	background-color: white;
 }
 
 header {
@@ -16,6 +18,33 @@ header {
 	position: sticky;
 	background-color: white;
 	top: 0;
+	background-color: #fbffff;
+
+	h1 {
+		margin-top: 0;
+	}
+}
+
+.cal-legend {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	background-color: #fbffff;
+
+	.committee {
+		font-weight: bold;
+	}
+
+	.event {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.square {
+		width: 20px;
+		height: 20px;
+	}
 }
 
 .yaag-calendar {
@@ -87,7 +116,7 @@ header {
 	background-color: orange;
 }
 
-.fatwanight {
+.teal {
 	background-color: #31fdfd;
 }
 
