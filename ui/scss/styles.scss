@@ -1,3 +1,5 @@
+@use 'colors.scss';
+
 body {
 	background-color: white;
 	font-family: 'Segoe UI',
@@ -18,7 +20,6 @@ header {
 	position: sticky;
 	background-color: white;
 	top: 0;
-	background-color: #fbffff;
 
 	h1 {
 		margin-top: 0;
@@ -105,42 +106,6 @@ header {
 .clickable {
 	font-weight: bold;
 	cursor: pointer;
-}
-
-.skyblue {
-	background-color: #9fd8ef;
-}
-
-.brown {
-	background-color: #C4A484;
-}
-
-.pink {
-	background-color: pink;
-}
-
-.pink2 {
-	background-color: #ff98aa;
-}
-
-.orange {
-	background-color: orange;
-}
-
-.teal {
-	background-color: #31fdfd;
-}
-
-.light-green {
-	background-color: #7cff7c;
-}
-
-.green {
-	background-color: lightgreen;
-}
-
-.white {
-	background-color: white;
 }
 
 .day-colors {}

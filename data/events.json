@@ -4,7 +4,7 @@
     "name": "Brothers' Youth Night",
     "committee": "Brothers",
     "next": "weekly",
-    "color": "skyblue",
+    "color": "brothers-1",
     "first": "2024/01/06 07:15pm",
     "duration": 2.0,
     "cancelled": [
@@ -19,7 +19,7 @@
     "name": "Girls' Game Day",
     "committee": "Sisters",
     "next": "monthly by weekday count",
-    "color": "pink",
+    "color": "sisters-1",
     "first": "2024/01/06 05:30pm",
     "duration": 2.0,
     "cancelled": [
@@ -31,7 +31,7 @@
     "name": "Spill the tea",
     "committee": "Sisters",
     "next": "monthly by weekday count",
-    "color": "brown",
+    "color": "sisters-2",
     "first": "2024/01/20 07:15pm",
     "duration": 2.0,
     "cancelled": [
@@ -43,7 +43,7 @@
     "name": "Monthly Halaqah",
     "committee": "Da'wa",
     "next": "monthly by weekday count",
-    "color": "orange",
+    "color": "dawa-1",
     "first": "2024/01/19 07:15pm",
     "duration": 1.0,
     "cancelled": [
@@ -54,7 +54,7 @@
     "id": 4,
     "name": "Ramadan",
     "next": "everyday",
-    "color": "light-green",
+    "color": "ramadan",
     "first": "2024/03/11 12:00am",
     "duration": 24.0,
     "last": "2024/04/09 11:59pm"
@@ -62,7 +62,7 @@
   {
     "id": 5,
     "name": "Eid",
-    "color": "green",
+    "color": "eid",
     "first": "2024/04/10 12:00am",
     "duration": 24.0
   },
@@ -71,7 +71,7 @@
     "name": "Fatwa Night",
     "committee": "Education",
     "next": "monthly by weekday count",
-    "color": "teal",
+    "color": "education-1",
     "first": "2024/01/02 07:15pm",
     "duration": 1.0,
     "cancelled": [
@@ -81,8 +81,7 @@
   {
     "id": 7,
     "name": "Build a Cake",
-    "committee": "Sisters",
-    "color": "pink2",
+    "color": "sisters-3",
     "first": "2024/01/14 12:00pm"
   }
 ]

@@ -1,3 +1,68 @@
+.education-1 {
+  background-color: #D5F0C1;
+}
+
+.education-2 {
+  background-color: #AAD9BB;
+}
+
+.education-3 {
+  background-color: #80BCBD;
+}
+
+.brothers-1 {
+  background-color: #6DB9EF;
+}
+
+.brothers-2 {
+  background-color: #86B6F6;
+}
+
+.brothers-3 {
+  background-color: #B4D4FF;
+}
+
+.sisters-1 {
+  background-color: #DC84F3;
+}
+
+.sisters-2 {
+  background-color: #AC87C5;
+}
+
+.sisters-3 {
+  background-color: #ffbfbf;
+}
+
+.sisters-4 {
+  background-color: #9751f0;
+}
+
+.dawa-1 {
+  background-color: #FFE7C1;
+}
+
+.dawa-2 {
+  background-color: #F6D776;
+}
+
+.dawa-3 {
+  background-color: #FAEF9B;
+}
+
+.ramadan {
+  border-bottom: 2px solid #8e3998;
+}
+
+.eid {
+  background-color: #8e3998;
+  color: white;
+}
+
+.white {
+  background-color: white;
+}
+
 body {
   background-color: white;
   font-family: "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
@@ -11,7 +76,6 @@ header {
   position: sticky;
   background-color: white;
   top: 0;
-  background-color: #fbffff;
 }
 header h1 {
   margin-top: 0;
@@ -86,42 +150,6 @@ header h1 {
 .clickable {
   font-weight: bold;
   cursor: pointer;
-}
-
-.skyblue {
-  background-color: #9fd8ef;
-}
-
-.brown {
-  background-color: #C4A484;
-}
-
-.pink {
-  background-color: pink;
-}
-
-.pink2 {
-  background-color: #ff98aa;
-}
-
-.orange {
-  background-color: orange;
-}
-
-.teal {
-  background-color: #31fdfd;
-}
-
-.light-green {
-  background-color: #7cff7c;
-}
-
-.green {
-  background-color: lightgreen;
-}
-
-.white {
-  background-color: white;
 }
 
 .dots {
