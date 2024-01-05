@@ -63,6 +63,20 @@
   background-color: white;
 }
 
+.sidebar-l {
+  display: flex;
+  flex-flow: wrap;
+}
+.sidebar-l > .sidebar {
+  flex-basis: 20rem;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+.sidebar-l .notsidebar {
+  flex-grow: 999;
+  min-inline-size: 75%;
+}
+
 body {
   background-color: white;
   font-family: "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
@@ -103,8 +117,8 @@ header h1 {
 
 .yaag-calendar {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
   column-gap: 4rem;
   row-gap: 3rem;
   width: 80%;

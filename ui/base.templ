@@ -10,9 +10,14 @@ templ Base() {
 		<script src="/static/htmx.min.js"></script>
 	</head>
 	<body>
-		<main>
-			{children...}
-		</main>
+		<div class="sidebar-l">
+			<div class="sidebar"> <!-- add event-details -->
+				<h1>This is a test</h1>
+			</div>
+			<main class="notsidebar">
+				{children...}
+			</main>
+		</div>
 	</body>
 	</html>
 }
