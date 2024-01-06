@@ -18,7 +18,6 @@ body {
 
 header {
 	text-align: center;
-	position: sticky;
 	background-color: white;
 	top: 0;
 
@@ -31,7 +30,6 @@ header {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-evenly;
-	background-color: #eff;
 	flex-flow: wrap;
 
 	.committee {
@@ -52,8 +50,8 @@ header {
 
 .yaag-calendar {
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	grid-template-rows: repeat(4, 1fr);
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: repeat(3, 1fr);
 	column-gap: 4rem;
 	row-gap: 3rem;
 	width: 80%;
@@ -124,19 +122,3 @@ header {
 	border-radius: 100%;
 }
 
-.event-details {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: .5rem;
-
-	>.square {
-		width: 20px;
-		height: 20px;
-	}
-
-	>.name {
-		font-size: 1.2rem;
-		font-weight: bold;
-	}
-}

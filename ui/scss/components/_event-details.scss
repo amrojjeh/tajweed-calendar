@@ -1,0 +1,18 @@
+.event-details {
+	>.title {
+		display: flex;
+		align-items: center;
+		gap: .5rem;
+
+		>.square {
+			width: 20px;
+			height: 20px;
+		}
+
+		>.name {
+			font-size: 1.2rem;
+			font-weight: bold;
+		}
+	}
+
+}

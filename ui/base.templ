@@ -8,11 +8,27 @@ templ Base() {
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Year at a Glance</title>
 		<script src="/static/htmx.min.js"></script>
+		<script src="/static/main.js"></script>
 	</head>
 	<body>
 		<div class="sidebar-l">
-			<div class="sidebar"> <!-- add event-details -->
-				<h1>This is a test</h1>
+			<div class="sidebar">
+				<h1>January 2</h1>
+				<div class="event-details">
+					<div class="title">
+						<div class="square brothers-1"></div>
+						<p>Brothers Youth Night</p>
+					</div>
+					<em>10:15pm - 2:30pm</em>
+				</div>
+				<div class="event-details">
+					<div class="title">
+						<div class="square brothers-1"></div>
+						<p>Brothers Youth Night</p>
+					</div>
+					<em>10:15pm - 2:30pm</em>
+				</div>
+				<close-sidebar></close-sidebar>
 			</div>
 			<main class="notsidebar">
 				{children...}

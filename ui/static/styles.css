@@ -63,6 +63,10 @@
   background-color: white;
 }
 
+._hide {
+  display: none !important;
+}
+
 .sidebar-l {
   display: flex;
   flex-flow: wrap;
@@ -71,10 +75,37 @@
   flex-basis: 20rem;
   flex-grow: 1;
   flex-shrink: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #eff;
+  overflow: scroll;
+  padding-bottom: 4rem;
 }
 .sidebar-l .notsidebar {
   flex-grow: 999;
   min-inline-size: 75%;
+}
+
+@media (max-width: 1278px) {
+  .sidebar-l > .sidebar {
+    position: sticky;
+    top: 0;
+    max-height: 15vh;
+  }
+}
+.event-details > .title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.event-details > .title > .square {
+  width: 20px;
+  height: 20px;
+}
+.event-details > .title > .name {
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 
 body {
@@ -87,7 +118,6 @@ body {
 
 header {
   text-align: center;
-  position: sticky;
   background-color: white;
   top: 0;
 }
@@ -99,7 +129,6 @@ header h1 {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  background-color: #eff;
   flex-flow: wrap;
 }
 .cal-legend .committee {
@@ -117,8 +146,8 @@ header h1 {
 
 .yaag-calendar {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
   column-gap: 4rem;
   row-gap: 3rem;
   width: 80%;
@@ -177,21 +206,6 @@ header h1 {
   width: 0.5rem;
   height: 0.5rem;
   border-radius: 100%;
-}
-
-.event-details {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-}
-.event-details > .square {
-  width: 20px;
-  height: 20px;
-}
-.event-details > .name {
-  font-size: 1.2rem;
-  font-weight: bold;
 }
 
 /*# sourceMappingURL=styles.css.map */
