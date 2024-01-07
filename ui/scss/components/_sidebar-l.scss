@@ -1,7 +1,6 @@
 .sidebar-l {
   display: flex;
   flex-flow: wrap;
-  align-items: stretch;
 
   >.sidebar {
     flex-basis: 20rem;
@@ -13,6 +12,9 @@
     overflow: scroll;
     padding-right: 1rem;
     padding-bottom: 1rem;
+    position: sticky;
+    top: 0;
+    height: 100vh;
 
     >.head {
       display: flex;
@@ -31,8 +33,6 @@
 @media (max-width: 1278px) {
   .sidebar-l {
     >.sidebar {
-      position: sticky;
-      top: 0;
       max-height: 30vh;
       margin-bottom: 4rem;
     }
