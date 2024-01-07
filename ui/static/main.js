@@ -5,11 +5,15 @@ class CloseSidebar extends HTMLElement {
 	}
 
 	connectedCallback() {
-		this.innerHTML = "<button>Close</button>"
+		this.innerHTML = `<button><img src="/static/close.svg"></button>`;
 		this.data.sidebar = document.querySelector(".sidebar-l > .sidebar");
 		this.querySelector("button").addEventListener("click", () => {
 			this.data.sidebar.classList.add("_hide");
 		});
+	}
+
+	disconnectedCallback() {
+		this.innerHTML = "";
 	}
 }
 

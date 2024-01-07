@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"flag"
+	"io/fs"
 	"log/slog"
 	"net/http"
 	"os"
@@ -47,15 +48,30 @@ func main() {
 	}
 }
 
-func loadEvents() ([]cal.Event, error) {
-	data, err := data.Files.ReadFile("events.json")
+func loadEvents() (cal.Events, error) {
+	files, err := fs.Glob(data.Files, "*.json")
 	if err != nil {
-		return []cal.Event{}, nil
+		return cal.Events{}, nil
 	}
 	events := []cal.Event{}
-	err = json.Unmarshal(data, &events)
-	if err != nil {
-		return []cal.Event{}, err
+	for _, f := range files {
+		es := []cal.Event{}
+		data, err := data.Files.ReadFile(f)
+		if err != nil {
+			return cal.Events{}, nil
+		}
+		err = json.Unmarshal(data, &es)
+		if err != nil {
+			return cal.Events{}, err
+		}
+
+		for _, e := range es {
+			events = append(events, e)
+		}
+	}
+
+	for i := 0; i < len(events); i++ {
+		events[i].Id = i
 	}
 
 	return events, nil

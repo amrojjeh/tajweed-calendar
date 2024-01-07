@@ -1,6 +1,6 @@
 package ui
 
-templ Base() {
+templ Base(sidebar SidebarViewModel) {
 	<!doctype html>
 	<html lang="en">
 	<head>
@@ -12,24 +12,7 @@ templ Base() {
 	</head>
 	<body>
 		<div class="sidebar-l">
-			<div class="sidebar">
-				<h1>January 2</h1>
-				<div class="event-details">
-					<div class="title">
-						<div class="square brothers-1"></div>
-						<p>Brothers Youth Night</p>
-					</div>
-					<em>10:15pm - 2:30pm</em>
-				</div>
-				<div class="event-details">
-					<div class="title">
-						<div class="square brothers-1"></div>
-						<p>Brothers Youth Night</p>
-					</div>
-					<em>10:15pm - 2:30pm</em>
-				</div>
-				<close-sidebar></close-sidebar>
-			</div>
+			@Sidebar(sidebar)
 			<main class="notsidebar">
 				{children...}
 			</main>

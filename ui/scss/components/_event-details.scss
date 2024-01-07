@@ -1,4 +1,6 @@
 .event-details {
+	padding-left: 1rem;
+
 	>.title {
 		display: flex;
 		align-items: center;
@@ -12,7 +14,15 @@
 		>.name {
 			font-size: 1.2rem;
 			font-weight: bold;
+			margin: 0;
 		}
 	}
 
+	>.flyer {
+		width: 100%;
+	}
+}
+
+.event-details>.title>.name>.register {
+	padding-left: 0.3rem;
 }

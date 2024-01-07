@@ -20,7 +20,7 @@ templ manyDay(m DayViewModel) {
 	<div class="day-colors">
 		<span class="white clickable"
 		hx-get={m.EventDetailsGET}
-		hx-target="#event-details"
+		hx-target="#sidebar"
 		hx-swap="outerHTML">{strconv.Itoa(m.Number)}</span>
 		<div class="dots">
 			for _, c := range m.Colors {
@@ -36,7 +36,7 @@ templ singleDay(m DayViewModel) {
 	} else {
 		<span class={m.Colors[0], "clickable"}
 		hx-get={m.EventDetailsGET}
-		hx-target="#event-details"
+		hx-target="#sidebar"
 		hx-swap="outerHTML">{strconv.Itoa(m.Number)}</span>
 	}
 }

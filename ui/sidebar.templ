@@ -1,0 +1,19 @@
+package ui
+
+type SidebarViewModel struct {
+	Hide bool
+	Date string
+	Events []EventDetailsViewModel
+}
+
+templ Sidebar(m SidebarViewModel) {
+	<div id="sidebar" class={"sidebar", templ.KV("_hide", m.Hide)}>
+		<div class="head">
+			<h1>{m.Date}</h1>
+			<close-sidebar></close-sidebar>
+		</div>
+		for _, e := range m.Events {
+			@EventDetails(e)
+		}
+	</div>
+}

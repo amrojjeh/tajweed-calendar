@@ -3,9 +3,11 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"path"
 	"strconv"
 	"time"
 
+	"github.com/a-h/templ"
 	"github.com/amrojjeh/tajweed-calendar/ui"
 )
 
@@ -22,24 +24,6 @@ func (app application) eventDetailsGet() http.Handler {
 			app.serverError(w, err)
 			return
 		}
-		idstrs := r.Form["id"]
-		ms := []ui.EventViewModel{}
-		for _, str := range idstrs {
-			id, err := strconv.Atoi(str)
-			if err != nil {
-				app.clientError(w, http.StatusBadRequest)
-				return
-			}
-			e, err := app.events.GetEventWithId(id)
-			if err != nil {
-				app.clientError(w, http.StatusBadRequest)
-				return
-			}
-			ms = append(ms, ui.EventViewModel{
-				Color: e.Color,
-				Name:  e.Name,
-			})
-		}
 		monthstr := r.Form.Get("m")
 		month, err := strconv.Atoi(monthstr)
 		if err != nil {
@@ -52,10 +36,34 @@ func (app application) eventDetailsGet() http.Handler {
 			app.serverError(w, err)
 			return
 		}
-		m := ui.EventDetailsViewModel{
-			Events: ms,
-			Time:   fmt.Sprintf("%v %v ", time.Month(month), day),
+		sidebarModel := ui.SidebarViewModel{
+			Hide:   false,
+			Date:   fmt.Sprintf("%v %v ", time.Month(month), day),
+			Events: []ui.EventDetailsViewModel{},
 		}
-		ui.EventDetails(m).Render(r.Context(), w)
+		idstrs := r.Form["id"]
+		for _, str := range idstrs {
+			id, err := strconv.Atoi(str)
+			if err != nil {
+				app.clientError(w, http.StatusBadRequest)
+				return
+			}
+			e, err := app.events.GetEventWithId(id)
+			if err != nil {
+				app.clientError(w, http.StatusBadRequest)
+				return
+			}
+			m := ui.EventDetailsViewModel{
+				Color:        e.Color,
+				Name:         e.Name,
+				Time:         e.Time(),
+				Registration: templ.URL(e.RegistrationURL),
+			}
+			if e.Flyer != "" {
+				m.Flyer = path.Join("/static/flyers", e.Flyer)
+			}
+			sidebarModel.Events = append(sidebarModel.Events, m)
+		}
+		ui.Sidebar(sidebarModel).Render(r.Context(), w)
 	})
 }

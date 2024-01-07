@@ -1,0 +1,41 @@
+[
+	{
+		"name": "Girls' Game Day",
+		"color": "sisters-1",
+		"first": "2024/01/06 05:30pm",
+		"flyer": "ggd-1-6.jpeg",
+		"registration": "https://givebutter.com/girlsgameday",
+		"duration": 2.0,
+		"cancelled": [
+			"2024/04/06 12:00am"
+		]
+	},
+	{
+		"name": "Girls' Game Day",
+		"committee": "Sisters",
+		"next": "monthly by weekday count",
+		"color": "sisters-1",
+		"first": "2024/02/03 05:30pm",
+		"duration": 2.0,
+		"registration": "https://givebutter.com/girlsgameday",
+		"cancelled": [
+			"2024/04/06 12:00am"
+		]
+	},
+	{
+		"name": "Spill the tea",
+		"committee": "Sisters",
+		"next": "monthly by weekday count",
+		"color": "sisters-2",
+		"first": "2024/01/20 07:15pm",
+		"duration": 2.0,
+		"cancelled": [
+			"2024/03/16 12:00am"
+		]
+	},
+	{
+		"name": "Build a Cake",
+		"color": "sisters-3",
+		"first": "2024/01/14 12:00pm"
+	}
+]

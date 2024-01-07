@@ -1,26 +1,25 @@
 package ui
 
 type EventDetailsViewModel struct {
-	Events []EventViewModel
-	Time string
-}
-
-type EventViewModel struct {
 	Color string
 	Name string
+	Time string
+	Flyer string
+	Registration templ.SafeURL
 }
 
+// TODO(Amr Ojjeh): Add registration link
 templ EventDetails(m EventDetailsViewModel) {
-	<div class="event-details" id="event-details">
-		<span>{m.Time}</span>
-		for _, m := range m.Events {
+	<div class="event-details">
+		<div class="title">
 			<div class={"square", m.Color}></div>
-			<p class="name">{m.Name}</p>
-		}
-	</div>
-}
-
-templ EventDetailsEmpty() {
-	<div class="event-details" id="event-details">
+			<p class="name">{m.Name}
+			if m.Registration != "" {
+			<a target="_blank" href={m.Registration}	
+			class="register"><img src="/static/external.svg"/></a>
+			}</p>
+		</div>
+		<em>{m.Time}</em>
+		<img class="flyer" src={m.Flyer} />
 	</div>
 }

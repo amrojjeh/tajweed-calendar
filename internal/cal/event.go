@@ -11,17 +11,21 @@ type EventTime time.Time
 type EventDuration time.Duration
 type Events []Event
 
+var id_counter = 0
+
 // TODO(Amr Ojjeh): Add "Added" for exceptional events within the series
 type Event struct {
-	Id        int           `json:"id"`
-	Name      string        `json:"name"`
-	Committee string        `json:"committee"`
-	Recurring RecurringType `json:"next"`
-	Color     string        `json:"color"`
-	FirstDate EventTime     `json:"first"`
-	Duration  EventDuration `json:"duration"`
-	LastDate  EventTime     `json:"last"`
-	Cancelled []EventTime   `json:"cancelled"`
+	Id              int           `json:"-"`
+	Name            string        `json:"name"`
+	Committee       string        `json:"committee"`
+	Recurring       RecurringType `json:"next"`
+	Color           string        `json:"color"`
+	Flyer           string        `json:"flyer"`
+	RegistrationURL string        `json:"registration"`
+	FirstDate       EventTime     `json:"first"`
+	Duration        EventDuration `json:"duration"`
+	LastDate        EventTime     `json:"last"`
+	Cancelled       []EventTime   `json:"cancelled"`
 }
 
 func (es Events) EventsByCommittees() map[string]Events {
@@ -136,4 +140,10 @@ func (e Event) Hour() int {
 
 func (e Event) Minute() int {
 	return time.Time(e.FirstDate).Minute()
+}
+
+func (e Event) Time() string {
+	ends := time.Time(e.FirstDate).Add(time.Duration(e.Duration))
+	return fmt.Sprintf("%02v:%02v - %02v:%02v", e.Hour(), e.Minute(), ends.Hour(),
+		ends.Minute())
 }

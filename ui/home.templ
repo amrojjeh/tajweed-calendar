@@ -49,16 +49,15 @@ func NewHomeViewModel(es cal.Events) HomeViewModel {
 }
 
 templ HomePage(m HomeViewModel) {
-	@Base() {
+	@Base(SidebarViewModel{Hide: true}) {
 		<header>
 			<h1>2024</h1>
-			@EventDetailsEmpty()
 		</header>
-		@Legend(m.Legend)
 		<div class="yaag-calendar">
 			for _, m := range m.Months {
 				@Month(m)
 			}
 		</div>
+		@Legend(m.Legend)
 	}
 }
