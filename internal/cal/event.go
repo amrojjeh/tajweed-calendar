@@ -143,7 +143,7 @@ func (e Event) Minute() int {
 }
 
 func (e Event) Time() string {
-	ends := time.Time(e.FirstDate).Add(time.Duration(e.Duration))
-	return fmt.Sprintf("%02v:%02v - %02v:%02v", e.Hour(), e.Minute(), ends.Hour(),
-		ends.Minute())
+	begins := time.Time(e.FirstDate)
+	ends := begins.Add(time.Duration(e.Duration))
+	return fmt.Sprintf("%v - %v", begins.Format("03:04"), ends.Format("03:04pm"))
 }
