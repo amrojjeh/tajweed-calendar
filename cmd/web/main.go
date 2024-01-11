@@ -66,6 +66,15 @@ func loadEvents() (cal.Events, error) {
 		}
 
 		for _, e := range es {
+			for _, d := range e.Details {
+				if time.Duration(d.Duration) == 0 {
+					d.Duration = e.Duration
+				}
+
+				if d.Flyer == "" {
+					d.Flyer = e.Flyer
+				}
+			}
 			events = append(events, e)
 		}
 	}

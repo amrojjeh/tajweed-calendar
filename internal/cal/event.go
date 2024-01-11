@@ -19,6 +19,7 @@ type Event struct {
 	Committee       string        `json:"committee"`
 	Recurring       RecurringType `json:"next"`
 	Color           string        `json:"color"`
+	Flyer           string        `json:"flyer"`
 	RegistrationURL string        `json:"registration"`
 	FirstDate       EventTime     `json:"first"`
 	Duration        EventDuration `json:"duration"`
