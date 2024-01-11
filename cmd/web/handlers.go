@@ -54,8 +54,10 @@ func (app *application) eventDetailsGet() http.Handler {
 				Color:        e.Color,
 				Name:         e.Name,
 				Time:         e.Time(),
-				Flyer:        path.Join("/static/flyers", e.Flyer),
 				Registration: templ.URL(e.RegistrationURL),
+			}
+			if e.Flyer != "" {
+				m.Flyer = path.Join("/static/flyers", e.Flyer)
 			}
 			if info, ok := e.EventInfo(2024, month, day); ok {
 				m.Flyer = path.Join("/static/flyers", info.Flyer)
