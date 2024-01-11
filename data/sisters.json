@@ -31,7 +31,14 @@
 	{
 		"name": "Build a Cake",
 		"color": "sisters-3",
-		"first": "2024/01/14 12:00pm",
-		"committee": "Sisters"
+		"first": "2024/01/14 01:30pm",
+		"committee": "Sisters",
+		"details": [
+			{
+				"date": "2024/01/14 01:30pm",
+				"duration": 2.5,
+				"flyer": "build-a-cake.gif"
+			}
+		]
 	}
 ]
