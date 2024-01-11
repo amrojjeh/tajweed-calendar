@@ -1,13 +1,25 @@
 package ui
 
-import "github.com/amrojjeh/tajweed-calendar/internal/cal"
+type LegendViewModel struct {
+	Committees []CommitteeViewModel
+}
 
-templ Legend(m map[string]cal.Events) {
+type CommitteeViewModel struct {
+	Name string
+	EventColors []EventColorViewModel
+}
+
+type EventColorViewModel struct {
+	Color string
+	Name string
+}
+
+templ Legend(m LegendViewModel) {
 	<div class="cal-legend">
-		for c, es := range m {
+		for _, c := range m.Committees {
 			<div>
-				<p class="committee">{c}</p>
-				for _, e := range es {
+				<p class="committee">{c.Name}</p>
+				for _, e := range c.EventColors {
 					<div class="event">
 						<div class={"square", e.Color}></div>
 						<p>{e.Name}</p>

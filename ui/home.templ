@@ -8,13 +8,13 @@ import (
 
 type HomeViewModel struct {
 	Months []MonthViewModel
-	Legend map[string]cal.Events
+	Legend LegendViewModel
 }
 
 func NewHomeViewModel(es cal.Events) HomeViewModel {
 	model := HomeViewModel{
 		Months: []MonthViewModel{},
-		Legend: es.EventsByCommittees(),
+		Legend: generateLegend(es),
 	}
 	for i := 1; i <= 12; i++ {
 		m := MonthViewModel{}
@@ -46,6 +46,39 @@ func NewHomeViewModel(es cal.Events) HomeViewModel {
 	}
 
 	return model
+}
+
+func generateLegend(es cal.Events) LegendViewModel {
+	eventsByCom := es.EventsByCommittee()
+	m := LegendViewModel{
+		Committees: []CommitteeViewModel{},
+	}
+
+	for c, es := range eventsByCom {
+		cm := CommitteeViewModel{
+			Name: c,
+			EventColors: []EventColorViewModel{},
+		}
+		addedOneOff := false
+
+		for _, e := range es {
+			if !addedOneOff && e.Recurring.IsOn == nil {
+				addedOneOff = true
+				cm.EventColors = append(cm.EventColors, EventColorViewModel{
+					Color: e.Color,
+					Name: "One-off",
+				})
+			} else {
+				cm.EventColors = append(cm.EventColors, EventColorViewModel{
+					Color: e.Color,
+					Name: e.Name,
+				})
+			}
+		}
+		m.Committees = append(m.Committees, cm)
+	}
+
+	return m
 }
 
 templ HomePage(m HomeViewModel) {
