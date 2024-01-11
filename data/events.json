@@ -6,11 +6,19 @@
     "color": "brothers-1",
     "first": "2024/01/06 07:15pm",
     "duration": 2.0,
+    "registration": "https://givebutter.com/youth-night",
     "cancelled": [
       "2024/03/16 12:00am",
       "2024/03/23 12:00am",
       "2024/03/30 12:00am",
       "2024/04/06 12:00am"
+    ],
+    "details": [
+      {
+        "date": "2024/01/06 07:15pm",
+        "flyer": "byn.jpeg",
+        "duration": 2.0
+      }
     ]
   },
   {
