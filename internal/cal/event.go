@@ -129,6 +129,13 @@ func (e Event) IsOn(year int, month time.Month, day int) bool {
 		return false
 	}
 
+	for _, d := range e.Details {
+		dDate := time.Time(d.Date)
+		if t.Year() == dDate.Year() && t.Month() == dDate.Month() && t.Day() == dDate.Day() {
+			return true
+		}
+	}
+
 	for _, c := range e.Cancelled {
 		ct := time.Time(c)
 		if ct.Year() == year && ct.Month() == month && ct.Day() == day {
