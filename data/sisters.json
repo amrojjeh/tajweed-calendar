@@ -1,5 +1,16 @@
 [
 	{
+		"name": "Breakfast at Tajweed",
+		"committee": "Sisters",
+		"next": "monthly by weekday count",
+		"color": "sisters-4",
+		"first": "2024/02/24 10:00am",
+		"duration": 2.0,
+		"cancelled": [
+			"2024/03/23 12:00am"
+		]
+	},
+	{
 		"name": "Girls' Game Day",
 		"committee": "Sisters",
 		"next": "monthly by weekday count",
