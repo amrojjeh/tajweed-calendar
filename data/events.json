@@ -86,5 +86,18 @@
         "flyer": "zakat.jpeg"
       }
     ]
+  },
+  {
+    "name": "Community Health & Wellness Night",
+    "committee": "Education",
+    "color": "education-2",
+    "first": "2024/02/02 07:30pm",
+    "duration": 1.0,
+    "details": [
+      {
+        "date": "2024/02/02 07:30pm",
+        "flyer": "health-02-02.jpeg"
+      }
+    ]
   }
 ]
