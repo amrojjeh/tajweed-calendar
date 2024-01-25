@@ -60,7 +60,9 @@ func (app *application) eventDetailsGet() http.Handler {
 				m.Flyer = path.Join("/static/flyers", e.Flyer)
 			}
 			if info, ok := e.EventInfo(2024, month, day); ok {
-				m.Flyer = path.Join("/static/flyers", info.Flyer)
+				if info.Flyer != "" {
+					m.Flyer = path.Join("/static/flyers", info.Flyer)
+				}
 				m.Time = info.Time()
 			}
 			sidebarModel.Events = append(sidebarModel.Events, m)

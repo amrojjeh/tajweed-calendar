@@ -32,7 +32,7 @@ func (q query) events() ([]cal.Event, error) {
 	for i, idstr := range ids {
 		id, err := strconv.Atoi(idstr)
 		if err != nil {
-			return events, nil
+			return events, err
 		}
 
 		event, err := q.app.events.GetEventWithId(id)
