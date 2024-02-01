@@ -100,5 +100,12 @@
         "flyer": "health-02-02.jpeg"
       }
     ]
+  },
+  {
+    "name": "Guidance Residential",
+    "committee": "Non-Tajweed",
+    "color": "non-tajweed",
+    "first": "2024/02/07 07:30pm",
+    "duration": 1.0
   }
 ]
